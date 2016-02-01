@@ -18,6 +18,7 @@ namespace SmartMove.Models
 
         public int? HomeTeamId { get; set; }
         public int? GuestTeamId { get; set; }
+        public VotedTeam? WiningTeam { get; set; }
 
         [ForeignKey("HomeTeamId")]
         [InverseProperty("HomeMatches")]

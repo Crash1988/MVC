@@ -9,6 +9,13 @@ namespace SmartMove.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
+        public DbSet<Match> Match { get; set; }
+        public DbSet<Team> Team { get; set; }
+        public DbSet<League> League { get; set; }
+        public DbSet<LeagueTeam> LeagueTeam { get; set; }
+        public DbSet<Vote> Vote { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -27,9 +34,5 @@ namespace SmartMove.Models
                 .WithMany(t => t.LeagueTeams)
                 .HasForeignKey(pt => pt.TeamId);
         }
-        public DbSet<Match> Match{ get; set; }
-        public DbSet<Team> Team { get; set; }
-        public DbSet<League> League { get; set; }
-        public DbSet<LeagueTeam> LeagueTeam { get; set; }
     }
 }
