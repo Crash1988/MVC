@@ -16,5 +16,7 @@ namespace SmartMove.Models
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+        public DbSet<Match> Match{ get; set; }
+        public DbSet<Team> Team { get; set; }
     }
 }

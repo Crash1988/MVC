@@ -8,9 +8,10 @@ using SmartMove.Models;
 namespace SmartMove.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160201012700_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -146,34 +147,6 @@ namespace SmartMove.Migrations
                     b.HasAnnotation("Relational:TableName", "AspNetUsers");
                 });
 
-            modelBuilder.Entity("SmartMove.Models.Match", b =>
-                {
-                    b.Property<int>("MatchId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<float>("GuestPoints");
-
-                    b.Property<int?>("GuestTeamId");
-
-                    b.Property<float>("HomePoints");
-
-                    b.Property<int?>("HomeTeamId");
-
-                    b.Property<DateTime>("playday");
-
-                    b.HasKey("MatchId");
-                });
-
-            modelBuilder.Entity("SmartMove.Models.Team", b =>
-                {
-                    b.Property<int>("TeamId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("name");
-
-                    b.HasKey("TeamId");
-                });
-
             modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNet.Identity.EntityFramework.IdentityRole")
@@ -204,17 +177,6 @@ namespace SmartMove.Migrations
                     b.HasOne("SmartMove.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("SmartMove.Models.Match", b =>
-                {
-                    b.HasOne("SmartMove.Models.Team")
-                        .WithMany()
-                        .HasForeignKey("GuestTeamId");
-
-                    b.HasOne("SmartMove.Models.Team")
-                        .WithMany()
-                        .HasForeignKey("HomeTeamId");
                 });
         }
     }
