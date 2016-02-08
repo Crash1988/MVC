@@ -21,7 +21,7 @@ namespace SmartMove.Models
         public DateTime PalyDay { get; set; }
         public float HomePoints { get; set; }
         public float GuestPoints { get; set; }
-
+        
         public int? HomeTeamId { get; set; }
         public int? GuestTeamId { get; set; }
         public WinnerTeam? Result { get; set; }

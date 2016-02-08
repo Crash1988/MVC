@@ -8,9 +8,10 @@ using SmartMove.Models;
 namespace SmartMove.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160201182211_migrations21220162")]
+    partial class migrations21220162
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -195,8 +196,6 @@ namespace SmartMove.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
-
-                    b.Property<string>("logo");
 
                     b.HasKey("TeamId");
                 });

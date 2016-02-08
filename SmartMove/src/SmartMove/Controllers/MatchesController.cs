@@ -42,8 +42,8 @@ namespace SmartMove.Controllers
         // GET: Matches/Create
         public IActionResult Create()
         {
-            ViewData["GuestTeamId"] = new SelectList(_context.Team, "TeamId", "GuestTeam");
-            ViewData["HomeTeamId"] = new SelectList(_context.Team, "TeamId", "HomeTeam");
+            ViewData["GuestTeamId"] = new SelectList(_context.Team, "TeamId", "Name");
+            ViewData["HomeTeamId"] = new SelectList(_context.Team, "TeamId", "Name");
             return View();
         }
 
@@ -76,8 +76,8 @@ namespace SmartMove.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["GuestTeamId"] = new SelectList(_context.Team, "TeamId", "GuestTeam", match.GuestTeamId);
-            ViewData["HomeTeamId"] = new SelectList(_context.Team, "TeamId", "HomeTeam", match.HomeTeamId);
+            ViewData["GuestTeamId"] = new SelectList(_context.Team, "TeamId", "Name", match.GuestTeamId);
+            ViewData["HomeTeamId"] = new SelectList(_context.Team, "TeamId", "Name", match.HomeTeamId);
             return View(match);
         }
 
