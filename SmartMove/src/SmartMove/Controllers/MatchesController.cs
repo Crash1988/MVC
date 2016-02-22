@@ -62,7 +62,7 @@ namespace SmartMove.Controllers
             ViewData["HomeTeamId"] = new SelectList(_context.Team, "TeamId", "HomeTeam", match.HomeTeamId);
             return View(match);
         }
-
+        //editing matches
         // GET: Matches/Edit/5
         public IActionResult Edit(int? id)
         {
