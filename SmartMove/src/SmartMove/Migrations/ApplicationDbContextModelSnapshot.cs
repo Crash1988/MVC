@@ -174,15 +174,15 @@ namespace SmartMove.Migrations
                     b.Property<int>("MatchId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<float>("GuestPoints");
+                    b.Property<float?>("GuestPoints");
 
                     b.Property<int?>("GuestTeamId");
 
-                    b.Property<float>("HomePoints");
+                    b.Property<float?>("HomePoints");
 
                     b.Property<int?>("HomeTeamId");
 
-                    b.Property<DateTime>("PalyDay");
+                    b.Property<DateTime>("MatchDate");
 
                     b.Property<int?>("Result");
 
@@ -194,9 +194,9 @@ namespace SmartMove.Migrations
                     b.Property<int>("TeamId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Logo");
 
-                    b.Property<string>("logo");
+                    b.Property<string>("Name");
 
                     b.HasKey("TeamId");
                 });
@@ -208,11 +208,11 @@ namespace SmartMove.Migrations
 
                     b.Property<string>("ApplicationUserID");
 
+                    b.Property<DateTime>("DateVoted");
+
                     b.Property<int?>("MatchMatchId");
 
                     b.Property<int>("VotedTeam");
-
-                    b.Property<DateTime>("datevote");
 
                     b.HasKey("VoteId");
                 });

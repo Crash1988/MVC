@@ -11,7 +11,7 @@ namespace SmartMove.Models
     {
         public int TeamId { get; set; }
         public String Name { get; set; }
-        public string logo { get; set; }
+        public string Logo { get; set; }
 
         public virtual ICollection<Match> HomeMatches { get; set; }
         public virtual ICollection<Match> AwayMatches { get; set; }

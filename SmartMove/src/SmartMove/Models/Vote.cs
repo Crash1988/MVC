@@ -14,7 +14,7 @@ namespace SmartMove.Models
     public class Vote
     {
         public int VoteId { get; set; }
-        public DateTime datevote { get; set; }
+        public DateTime DateVoted { get; set; }
         public Match Match { get; set; }
         public VotedTeam VotedTeam { get; set; }
         
