@@ -1,0 +1,50 @@
+@model SmartMove.Models.Vote
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Vote</h4>
+        <hr />
+        <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="ApplicationUserID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="ApplicationUserID" class ="form-control"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DateVoted" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DateVoted" class="form-control" />
+                <span asp-validation-for="DateVoted" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="VotedTeam" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="VotedTeam" class="form-control"></select>
+                <span asp-validation-for="VotedTeam" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
