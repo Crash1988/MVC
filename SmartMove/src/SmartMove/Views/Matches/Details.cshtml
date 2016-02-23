@@ -34,8 +34,17 @@
         <dd>
             @Html.DisplayFor(model => model.Result)
         </dd>
+        <dt>
+            Home Team
+        </dt>
         <dd>
-            @Html.DisplayFor(model => model.GuestTeam)
+            @Html.DisplayFor(model => model.GuestTeam.Name)
+        </dd>
+        <dt>
+            Gest Team
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HomeTeam.Name)
         </dd>
     </dl>
 </div>

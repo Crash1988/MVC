@@ -35,6 +35,10 @@ namespace SmartMove.Controllers
             {
                 return HttpNotFound();
             }
+            Team ht = _context.Team.Single(t => t.TeamId == match.HomeTeamId);
+            match.HomeTeam = ht;
+            Team gt = _context.Team.Single(t => t.TeamId == match.GuestTeamId);
+            match.GuestTeam = gt;
 
             return View(match);
         }
