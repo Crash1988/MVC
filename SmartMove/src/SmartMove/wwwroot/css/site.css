@@ -10,6 +10,14 @@
     padding-right: 15px;
 }
 
+.jumbotron {
+    margin-bottom: 0px;
+    background-image: url(/images/SmartMoveBanner.png);
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 /* Set widths on the form inputs since otherwise they're 100% wide */
 input,
 select,
