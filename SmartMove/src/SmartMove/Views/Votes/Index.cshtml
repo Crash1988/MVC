@@ -58,10 +58,10 @@
 @foreach (var item in Model.Votes) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Match)
+            @Html.DisplayFor(modelItem => item.Match.GuestTeam.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Match.GuestTeam.Name)
+            @Html.DisplayFor(modelItem => item.Match.HomeTeam.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Match.MatchDate)

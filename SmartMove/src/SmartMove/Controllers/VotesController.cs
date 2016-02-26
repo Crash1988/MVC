@@ -22,9 +22,7 @@ namespace SmartMove.Controllers
         public IActionResult Index()
         {
             string userId = User.GetUserId();
-            //VoteMatch VotedMatch = new VoteMatch(_context,userId);
-
-            var dbVotes = _context.Vote.Include(m => m.Match);
+            var dbVotes = _context.Vote.Include(m => m.Match).ThenInclude(v => v.HomeTeam).Include(m => m.Match).ThenInclude(v => v.GuestTeam);
             
             List<Vote> Votes = dbVotes.Where(v => v.user.Id == userId).ToList();            
             List<Match> UnVotedMatches = _context.Match.Where(p => !Votes.Any(p2 => p2.Match.MatchId == p.MatchId)).ToList();
