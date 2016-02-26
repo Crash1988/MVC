@@ -30,15 +30,18 @@ namespace SmartMove.Controllers
                 return HttpNotFound();
             }
 
-            Match match = _context.Match.Single(m => m.MatchId == id);
+            
+            var dbMatch = _context.Match.Include(m => m.GuestTeam).Include(m => m.HomeTeam);
+            Match match = dbMatch.Single(m => m.MatchId == id);
             if (match == null)
             {
                 return HttpNotFound();
             }
-            Team ht = _context.Team.Single(t => t.TeamId == match.HomeTeamId);
+
+           /* Team ht = _context.Team.Single(t => t.TeamId == match.HomeTeamId);
             match.HomeTeam = ht;
             Team gt = _context.Team.Single(t => t.TeamId == match.GuestTeamId);
-            match.GuestTeam = gt;
+            match.GuestTeam = gt;*/
 
             return View(match);
         }

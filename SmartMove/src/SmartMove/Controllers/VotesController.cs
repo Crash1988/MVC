@@ -3,6 +3,9 @@ using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
 using SmartMove.Models;
+using SmartMove.ViewModels.VoteMatch;
+using System.Security.Claims;
+using System.Collections.Generic;
 
 namespace SmartMove.Controllers
 {
@@ -18,7 +21,17 @@ namespace SmartMove.Controllers
         // GET: Votes
         public IActionResult Index()
         {
-            return View(_context.Vote.ToList());
+            string userId = User.GetUserId();
+            //VoteMatch VotedMatch = new VoteMatch(_context,userId);
+
+            var dbVotes = _context.Vote.Include(m => m.Match);
+            
+            List<Vote> Votes = dbVotes.Where(v => v.user.Id == userId).ToList();            
+            List<Match> UnVotedMatches = _context.Match.Where(p => !Votes.Any(p2 => p2.Match.MatchId == p.MatchId)).ToList();
+            VoteMatch VoteMatch = new VoteMatch(Votes,UnVotedMatches);
+
+
+            return View(VoteMatch);
         }
 
         // GET: Votes/Details/5
