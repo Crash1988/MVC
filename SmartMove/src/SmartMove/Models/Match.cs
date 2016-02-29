@@ -9,12 +9,7 @@ namespace SmartMove.Models
 {
     public class Match
     {
-        public enum WinnerTeam
-        {
-            AwayTeam,
-            HomeTeam,
-            Draw
-        }
+
         [Key]
         public int MatchId { get; set; }
 
@@ -25,7 +20,7 @@ namespace SmartMove.Models
         
         public int? HomeTeamId { get; set; }
         public int? GuestTeamId { get; set; }
-        public WinnerTeam? Result { get; set; }
+        public int? WinnerTeamId { get; set; }
 
         [ForeignKey("HomeTeamId")]
         [InverseProperty("HomeMatches")]
@@ -34,6 +29,10 @@ namespace SmartMove.Models
         [ForeignKey("GuestTeamId")]
         [InverseProperty("AwayMatches")]
         public virtual Team GuestTeam { get; set; }
+
+        [ForeignKey("WinnerTeamId")]
+        [InverseProperty("WinnerMatches")]
+        public virtual Team WinnerTeam { get; set; }
 
     }
 

@@ -11,32 +11,48 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.UnVotedMatches.First().MatchId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UnVotedMatches.First().GuestTeamId)
-        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.UnVotedMatches.First().MatchDate)
         </th>
-        <th></th>
+        <th>
+            Guest Team
+        </th>
+        <th>
+            VS
+        </th>
+        <th>
+            Home Team
+        </th>
+        <th>result</th>
     </tr>
-    
-@foreach (var item in Model.UnVotedMatches) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MatchId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GuestTeamId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MatchDate)
-        </td>
-       
-    </tr>
-}
+
+    @foreach (var item in Model.UnVotedMatches)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.MatchDate)
+            </td>
+            <td>
+                <a asp-action="create" asp-controller="Votes"  asp-route-id="0" asp-route-teamid="@item.GuestTeamId" asp-route-matchid="@item.MatchId">
+                    <img src="~/images/@item.GuestTeam.Logo" alt="@item.GuestTeam.Name" class="img-responsive" />
+                </a>
+            </td>
+            <td>
+                <h3>VS</h3>
+            </td>
+            <td>
+                <a asp-action="create" asp-controller="Votes" asp-route-id="0" asp-route-teamid="@item.HomeTeam.TeamId" asp-route-matchid="@item.MatchId">
+                    <img src="~/images/@item.HomeTeam.Logo" alt="@item.HomeTeam.Name" class="img-responsive" />
+                </a>
+            </td>
+            <td>
+                <p>asd</p>
+            </td>
+
+        </tr>
+    }
 </table>
 <p>
     Voted Matches
@@ -44,29 +60,45 @@
 <table class="table">
     <tr>
         <th>
+            Date Match
+        </th>
+        <th>
             Home Team
+        </th>
+        <th>
+                VS
         </th>
         <th>
             Guest Team
         </th>
         <th>
-            Date Match
+            result
         </th>
-        <th></th>
     </tr>
-    
-@foreach (var item in Model.Votes) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Match.GuestTeam.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Match.HomeTeam.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Match.MatchDate)
-        </td>
-       
-    </tr>
-}
+
+    @foreach (var item in Model.Votes)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Match.MatchDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-controller="Votes" asp-route-id="@item.VoteId" asp-route-teamid="@item.Match.GuestTeam.TeamId" >
+                    <img src="~/images/@item.Match.GuestTeam.Logo" alt="@item.Match.GuestTeam.Name" class="img-responsive" />
+                </a>
+            </td>
+            <td>
+                <h3>VS</h3>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-controller="Votes" asp-route-id="@item.VoteId" asp-route-teamid="@item.Match.HomeTeam.TeamId">
+                    <img src="~/images/@item.Match.HomeTeam.Logo" alt="@item.Match.HomeTeam.Name" class="img-responsive" />
+                </a>
+            </td>
+            <td>
+                <img src="~/images/@item.VotedTeam.Logo" alt="@item.VotedTeam.Name" class="img-responsive" />
+            </td>
+
+        </tr>
+    }
 </table>

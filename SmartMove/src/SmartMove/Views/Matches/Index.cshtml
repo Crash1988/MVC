@@ -20,10 +20,6 @@
         <th>
             @Html.DisplayNameFor(model => model.MatchDate)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Result)
-        </th>
-        <th></th>
     </tr>
     
 @foreach (var item in Model) {
@@ -38,7 +34,7 @@
             @Html.DisplayFor(modelItem => item.MatchDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Result)
+            @Html.DisplayFor(modelItem => item.WinnerTeam.Name)
         </td>
         <td>
             <a asp-action="Edit" asp-route-id="@item.MatchId">Edit</a> |

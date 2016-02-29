@@ -18,7 +18,11 @@ namespace SmartMove.Controllers
         // GET: Matches
         public IActionResult Index()
         {
-            var applicationDbContext = _context.Match.Include(m => m.GuestTeam).Include(m => m.HomeTeam);
+            if(_context.Match.ToList().Count()<=0)
+                return RedirectToAction("Create");
+            var applicationDbContext = _context.Match
+                .Include(m => m.GuestTeam)
+                .Include(m => m.HomeTeam);
             return View(applicationDbContext.ToList());
         }
 

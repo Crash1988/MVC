@@ -15,6 +15,8 @@ namespace SmartMove.Models
 
         public virtual ICollection<Match> HomeMatches { get; set; }
         public virtual ICollection<Match> AwayMatches { get; set; }
+        public virtual ICollection<Match> WinnerMatches { get; set; }
+        
 
         public List<LeagueTeam> LeagueTeams { get; set; }
     }

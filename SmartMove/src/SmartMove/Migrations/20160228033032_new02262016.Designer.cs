@@ -8,9 +8,10 @@ using SmartMove.Models;
 namespace SmartMove.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160228033032_new02262016")]
+    partial class new02262016
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -210,7 +211,7 @@ namespace SmartMove.Migrations
 
                     b.Property<int?>("MatchMatchId");
 
-                    b.Property<int>("VotedTeamId");
+                    b.Property<int>("VotedTeam");
 
                     b.Property<string>("userId");
 
@@ -280,10 +281,6 @@ namespace SmartMove.Migrations
                     b.HasOne("SmartMove.Models.Match")
                         .WithMany()
                         .HasForeignKey("MatchMatchId");
-
-                    b.HasOne("SmartMove.Models.Team")
-                        .WithMany()
-                        .HasForeignKey("VotedTeamId");
 
                     b.HasOne("SmartMove.Models.ApplicationUser")
                         .WithMany()
